@@ -75,7 +75,7 @@
     font-size: 44px; font-weight: 900; color: #fff; line-height: 1.15; margin-bottom: 10px;
   }
   .hero h1 em { color: var(--gold); font-style: normal; }
-  .hero-sub { font-size: 13px; color: rgba(255,255,255,0.5); letter-spacing: 0.06em; margin-bottom: 20px; font-family: 'Montserrat', sans-serif; font-weight: 600; }
+  .hero-logo-img { width: 500px; max-width: 100%; margin-bottom: 20px; display: block; }
   .hero-desc { font-size: 14.5px; color: rgba(255,255,255,0.78); line-height: 1.85; margin-bottom: 36px; max-width: 420px; }
   .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 40px; }
   .btn-gold { background: var(--gold); color: var(--navy); padding: 14px 28px; border-radius: 8px; font-size: 14px; font-weight: 800; text-decoration: none; transition: background 0.2s, transform 0.15s; }
@@ -83,8 +83,8 @@
   .btn-outline { border: 2px solid rgba(255,255,255,0.35); color: #fff; padding: 14px 28px; border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; transition: border-color 0.2s; }
   .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
   .hero-stats { display: flex; gap: 28px; }
-  .hero-stat { text-align: left; }
-  .hero-stat-num { font-family: 'Montserrat', sans-serif; font-size: 30px; font-weight: 900; color: var(--gold); line-height: 1; }
+  .hero-stat { text-align: left; min-width: 160px; }
+  .hero-stat-num { display: inline-flex; align-items: center; white-space: nowrap; font-family: 'Montserrat', sans-serif; font-size: 24px; font-weight: 900; color: var(--gold); line-height: 1; }
   .hero-stat-label { font-size: 11px; color: rgba(255,255,255,0.55); margin-top: 4px; }
   .hero-stat-divider { width: 1px; background: rgba(255,255,255,0.15); }
 
@@ -423,7 +423,8 @@
     }
     .hero-badge { font-size: 10px; padding: 4px 12px; }
     .hero h1 { font-size: 24px; margin-bottom: 8px; }
-    .hero-sub { font-size: 11px; letter-spacing: 0.05em; }
+    .hero-sub-title { font-size: 26px; }
+    .hero-sub-suffix { font-size: 16px; }
     .hero-desc { font-size: 13px; line-height: 1.7; max-width: 100%; }
     .hero-stats { flex-direction: column; gap: 16px; }
     .hero-stat-divider { display: none; }
@@ -550,38 +551,39 @@
     section { padding: 40px 12px; }
     
     .hero-left { padding: 32px 12px; }
-    .hero h1 { font-size: 20px; }
-    .hero-sub { font-size: 10px; }
-    .hero-desc { font-size: 12px; }
-    .hero-badge { font-size: 9px; padding: 3px 10px; }
+    .hero h1 { font-size: 22px; }
+    .hero-sub-title { font-size: 24px; }
+    .hero-sub-suffix { font-size: 15px; }
+    .hero-desc { font-size: 13px; }
+    .hero-badge { font-size: 10px; padding: 4px 10px; }
     
-    .section-title { font-size: 20px; }
-    .section-desc { font-size: 12px; }
+    .section-title { font-size: 22px; }
+    .section-desc { font-size: 13px; }
     
-    .card-body h3 { font-size: 14px; }
-    .schedule-table { font-size: 11px; }
-    .schedule-table th { padding: 8px 10px; font-size: 10px; }
-    .schedule-table td { padding: 10px 8px; font-size: 11px; }
+    .card-body h3 { font-size: 15px; }
+    .schedule-table { font-size: 12px; }
+    .schedule-table th { padding: 8px 10px; font-size: 11px; }
+    .schedule-table td { padding: 10px 8px; font-size: 12px; }
     
-    .org-name { font-size: 18px; }
-    .org-bio { font-size: 12px; }
+    .org-name { font-size: 20px; }
+    .org-bio { font-size: 13px; }
     
-    .voice-text { font-size: 11px; }
+    .voice-text { font-size: 12px; }
     
     .features-badges { gap: 10px; }
     .feature-badge { padding: 14px 10px; }
     .feature-badge-icon { font-size: 22px; }
-    .feature-badge-text { font-size: 11px; }
-    .about-tagline { font-size: 12px; }
+    .feature-badge-text { font-size: 12px; }
+    .about-tagline { font-size: 13px; }
     
-    .part-highlight { font-size: 32px; }
-    .part-intro { font-size: 12px; }
+    .part-highlight { font-size: 34px; }
+    .part-intro { font-size: 13px; }
     .faq-item { padding: 18px; }
-    .faq-question { font-size: 12px; }
-    .faq-answer { font-size: 11px; }
+    .faq-question { font-size: 13px; }
+    .faq-answer { font-size: 12px; }
     
     .contact-form { padding: 24px 14px; }
-    .form-submit { font-size: 13px; }
+    .form-submit { font-size: 14px; }
   }
 </style>
 </head>
@@ -605,8 +607,7 @@
 <div class="hero">
   <!-- 左：テキスト -->
   <div class="hero-left">
-    <div class="hero-badge">BtoB Sales Research Community</div>
-    <p class="hero-sub">SALES ACADEMY BY MARKEY CONSULTING</p>
+    <img src="to_B_Sales_Academy_logo.jpg" alt="BtoB セールスアカデミー by MARKEY CONSULTING" class="hero-logo-img">
     <h1>BtoB営業を、<br><em>みんなで学ぶ。</em><br>共に成長する。</h1>
     <p class="hero-desc">法人営業・SaaS営業・コンサルティング営業など、To Bセールスの最前線で活躍するプロフェッショナルが集まり、実践的なノウハウを共有する研究会です。</p>
     <div class="hero-btns">
@@ -615,18 +616,18 @@
     </div>
     <div class="hero-stats">
       <div class="hero-stat">
-        <div class="hero-stat-num">月1回</div>
-        <div class="hero-stat-label">定例勉強会</div>
+        <div class="hero-stat-num">💻 オンライン開催</div>
+        <div class="hero-stat-label">全国どこからでも参加OK</div>
       </div>
       <div class="hero-stat-divider"></div>
       <div class="hero-stat">
-        <div class="hero-stat-num">3形式</div>
-        <div class="hero-stat-label">学び・交流・講演</div>
+        <div class="hero-stat-num">📖 月1回</div>
+        <div class="hero-stat-label">勉強会・ディスカッション</div>
       </div>
       <div class="hero-stat-divider"></div>
       <div class="hero-stat">
-        <div class="hero-stat-num">全国</div>
-        <div class="hero-stat-label">オンライン参加OK</div>
+        <div class="hero-stat-num">🤝 無料登録</div>
+        <div class="hero-stat-label">イベント時のみ費用発生</div>
       </div>
     </div>
   </div>
@@ -641,13 +642,6 @@
       <div style="font-size:22px; margin-bottom:2px;">🏆</div>
       BtoB Sales<br>
       <span class="float-badge-sub">Research Community</span>
-    </div>
-    <div class="hero-float-card">
-      <div class="float-icon">🎯</div>
-      <div class="float-text">
-        <strong>次回開催</strong>
-        毎月第3金曜日<br>勉強会・情報交換
-      </div>
     </div>
   </div>
 </div>
