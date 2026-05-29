@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sales Academy by MARKEY CONSULTING</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1E1456;
+    --navy-light: #2D1B69;
+    --gold: #F5C842;
+    --gold-dark: #D4A820;
+    --white: #ffffff;
+    --light-bg: #F8F7FF;
+    --text-dark: #1a1a2e;
+    --text-mid: #4a4a6a;
+    --text-light: #8888aa;
+    --border: #e0dff5;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Noto Sans JP', sans-serif; color: var(--text-dark); background: #fff; }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--navy);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px; height: 68px;
+    box-shadow: 0 2px 24px rgba(0,0,0,0.3);
+  }
+  .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .logo-box {
+    width: 44px; height: 44px; background: var(--gold); border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 10px;
+    color: var(--navy); line-height: 1.15; text-align: center;
+  }
+  .nav-brand { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 13px; color: #fff; letter-spacing: 0.02em; }
+  .nav-brand span { color: var(--gold); }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a { color: rgba(255,255,255,0.82); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta { background: var(--gold); color: var(--navy); padding: 9px 22px; border-radius: 6px; font-size: 13px; font-weight: 700; text-decoration: none; transition: background 0.2s; }
+  .nav-cta:hover { background: var(--gold-dark); }
+
+  /* ─── HERO ─── */
+  .hero {
+    display: grid; grid-template-columns: 52% 48%;
+    min-height: 620px; overflow: hidden;
+  }
+  .hero-left {
+    background: var(--navy);
+    padding: 72px 56px 72px 80px;
+    display: flex; flex-direction: column; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .hero-left::before {
+    content: '';
+    position: absolute; bottom: -80px; left: -80px;
+    width: 320px; height: 320px;
+    background: radial-gradient(circle, rgba(245,200,66,0.1) 0%, transparent 70%);
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(245,200,66,0.15); border: 1px solid rgba(245,200,66,0.35);
+    color: var(--gold); font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+    padding: 6px 14px; border-radius: 20px; margin-bottom: 24px;
+    width: fit-content;
+  }
+  .hero-badge::before { content: '●'; font-size: 7px; }
+  .hero h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 44px; font-weight: 900; color: #fff; line-height: 1.15; margin-bottom: 10px;
+  }
+  .hero h1 em { color: var(--gold); font-style: normal; }
+  .hero-sub { font-size: 13px; color: rgba(255,255,255,0.5); letter-spacing: 0.06em; margin-bottom: 20px; font-family: 'Montserrat', sans-serif; font-weight: 600; }
+  .hero-desc { font-size: 14.5px; color: rgba(255,255,255,0.78); line-height: 1.85; margin-bottom: 36px; max-width: 420px; }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 40px; }
+  .btn-gold { background: var(--gold); color: var(--navy); padding: 14px 28px; border-radius: 8px; font-size: 14px; font-weight: 800; text-decoration: none; transition: background 0.2s, transform 0.15s; }
+  .btn-gold:hover { background: var(--gold-dark); transform: translateY(-2px); }
+  .btn-outline { border: 2px solid rgba(255,255,255,0.35); color: #fff; padding: 14px 28px; border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; transition: border-color 0.2s; }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+  .hero-stats { display: flex; gap: 28px; }
+  .hero-stat { text-align: left; }
+  .hero-stat-num { font-family: 'Montserrat', sans-serif; font-size: 30px; font-weight: 900; color: var(--gold); line-height: 1; }
+  .hero-stat-label { font-size: 11px; color: rgba(255,255,255,0.55); margin-top: 4px; }
+  .hero-stat-divider { width: 1px; background: rgba(255,255,255,0.15); }
+
+  /* Hero右：写真コラージュ */
+  .hero-right {
+    position: relative; overflow: hidden;
+    background: #0D0A2E;
+  }
+  .hero-main-photo {
+    width: 100%; height: 100%; object-fit: cover; opacity: 0.85;
+    display: block;
+  }
+  .hero-photo-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to right, rgba(14,10,46,0.55) 0%, transparent 50%),
+                linear-gradient(to top, rgba(14,10,46,0.6) 0%, transparent 50%);
+  }
+  /* 右側に浮かぶ小カード */
+  .hero-float-card {
+    position: absolute; bottom: 28px; right: 28px;
+    background: rgba(255,255,255,0.95);
+    border-radius: 12px; padding: 14px 18px;
+    display: flex; align-items: center; gap: 12px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+    max-width: 220px;
+  }
+  .float-icon { font-size: 28px; }
+  .float-text { font-size: 12px; color: var(--text-dark); line-height: 1.5; }
+  .float-text strong { display: block; font-weight: 800; color: var(--navy); font-size: 13px; }
+  .hero-float-badge {
+    position: absolute; top: 28px; right: 28px;
+    background: var(--gold); border-radius: 10px; padding: 10px 16px;
+    font-family: 'Montserrat', sans-serif; font-weight: 900;
+    font-size: 13px; color: var(--navy); text-align: center;
+    box-shadow: 0 4px 16px rgba(245,200,66,0.4);
+  }
+  .float-badge-sub { font-size: 10px; font-weight: 600; opacity: 0.7; }
+
+  /* ─── PHOTO STRIP（活動イメージ帯） ─── */
+  .photo-strip {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    height: 220px; overflow: hidden;
+  }
+  .strip-item { position: relative; overflow: hidden; }
+  .strip-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+  .strip-item:hover img { transform: scale(1.05); }
+  .strip-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(30,20,86,0.75) 0%, transparent 55%);
+    display: flex; align-items: flex-end; padding: 16px 20px;
+  }
+  .strip-label { font-size: 13px; font-weight: 700; color: #fff; }
+  .strip-label span { display: block; font-size: 11px; color: var(--gold); font-weight: 600; margin-bottom: 2px; letter-spacing: 0.06em; }
+
+  /* SECTION BASE */
+  section { padding: 80px 48px; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+  .section-label { font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.15em; color: var(--gold-dark); text-transform: uppercase; margin-bottom: 10px; }
+  .section-title { font-size: 28px; font-weight: 900; color: var(--navy); line-height: 1.3; margin-bottom: 14px; }
+  .section-desc { font-size: 15px; color: var(--text-mid); line-height: 1.85; max-width: 640px; }
+  .section-head { margin-bottom: 48px; }
+
+  /* ─── ABOUT ─── */
+  .about { background: var(--light-bg); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+  .about-photo-col { position: relative; }
+  .about-main-photo { width: 100%; border-radius: 16px; object-fit: cover; height: 400px; display: block; }
+  .about-sub-photo {
+    position: absolute; bottom: -24px; right: -24px;
+    width: 160px; height: 120px; object-fit: cover;
+    border-radius: 12px; border: 4px solid #fff;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+  }
+  .about-tag-chip {
+    position: absolute; top: 20px; left: 20px;
+    background: var(--gold); color: var(--navy);
+    font-size: 11px; font-weight: 800; padding: 6px 14px; border-radius: 20px;
+    letter-spacing: 0.05em;
+  }
+  .about-points { display: flex; flex-direction: column; gap: 18px; margin-top: 28px; }
+  .about-point { display: flex; gap: 16px; align-items: flex-start; background: #fff; border-radius: 12px; padding: 18px 20px; border: 1px solid var(--border); }
+  .point-icon { width: 40px; height: 40px; background: var(--navy); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+  .point-text h4 { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+  .point-text p { font-size: 13px; color: var(--text-mid); line-height: 1.7; }
+
+  /* About features badges */
+  .about-features { margin-top: 48px; padding-top: 36px; border-top: 1px solid var(--border); }
+  .features-badges { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 28px; }
+  .feature-badge { 
+    background: #fff; 
+    border: 2px solid var(--gold); 
+    border-radius: 12px; 
+    padding: 20px 16px; 
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .feature-badge-icon { 
+    font-size: 32px; 
+    display: block;
+  }
+  .feature-badge-text { 
+    font-size: 13px; 
+    font-weight: 700; 
+    color: var(--navy); 
+  }
+  .about-tagline { 
+    text-align: center; 
+    font-size: 14px; 
+    color: var(--text-mid); 
+    line-height: 1.85;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* ─── ACTIVITIES ─── */
+  .activities { background: #fff; }
+  .activity-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .activity-card { border: 1px solid var(--border); border-radius: 14px; overflow: hidden; transition: box-shadow 0.2s, transform 0.2s; }
+  .activity-card:hover { box-shadow: 0 8px 32px rgba(30,20,86,0.12); transform: translateY(-3px); }
+  .card-photo { height: 160px; overflow: hidden; position: relative; }
+  .card-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .card-photo-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(30,20,86,0.7) 0%, transparent 60%); display: flex; align-items: flex-end; padding: 14px 16px; }
+  .card-num { font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 700; color: var(--gold); letter-spacing: 0.1em; }
+  .card-body { padding: 22px; }
+  .card-body h3 { font-size: 16px; font-weight: 800; color: var(--navy); margin-bottom: 10px; }
+  .card-body p { font-size: 13px; color: var(--text-mid); line-height: 1.75; margin-bottom: 14px; }
+  .card-detail { display: flex; flex-direction: column; gap: 7px; }
+  .card-detail-item { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--text-dark); }
+  .detail-dot { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; flex-shrink: 0; }
+
+  /* SCHEDULE */
+  .schedule { background: var(--light-bg); }
+  .schedule-table { width: 100%; border-collapse: collapse; }
+  .schedule-table th { background: var(--navy); color: #fff; padding: 14px 20px; text-align: left; font-size: 13px; font-weight: 700; }
+  .schedule-table th:first-child { border-radius: 8px 0 0 0; }
+  .schedule-table th:last-child { border-radius: 0 8px 0 0; }
+  .schedule-table td { padding: 16px 20px; border-bottom: 1px solid var(--border); font-size: 14px; color: var(--text-dark); background: #fff; vertical-align: middle; }
+  .schedule-table tr:hover td { background: var(--light-bg); }
+  .sched-badge { display: inline-block; padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; }
+  .badge-study { background: #EEF0FF; color: #4B55CC; }
+  .badge-lecture { background: #FFF4DD; color: #A06A00; }
+  .badge-network { background: #E8F8F0; color: #1A7A4A; }
+
+  /* ─── ORGANIZER ─── */
+  .organizer { background: #fff; }
+  .organizer-card {
+    background: var(--navy); border-radius: 20px; overflow: hidden;
+    display: grid; grid-template-columns: 380px 1fr;
+  }
+  .org-photo-col { position: relative; overflow: hidden; }
+  .org-photo-col img { width: 100%; height: 100%; object-fit: cover; min-height: 360px; display: block; opacity: 0.85; }
+  .org-photo-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to right, transparent 40%, rgba(30,20,86,0.6) 100%),
+                linear-gradient(to top, rgba(30,20,86,0.5) 0%, transparent 50%);
+  }
+  .org-content { padding: 48px 48px 48px 40px; color: #fff; display: flex; flex-direction: column; justify-content: center; }
+  .org-role { font-family: 'Montserrat', sans-serif; font-size: 11px; letter-spacing: 0.12em; color: var(--gold); font-weight: 700; margin-bottom: 8px; }
+  .org-name { font-size: 26px; font-weight: 900; margin-bottom: 6px; }
+  .org-title { font-size: 14px; color: rgba(255,255,255,0.6); margin-bottom: 22px; }
+  .org-bio { font-size: 14px; color: rgba(255,255,255,0.82); line-height: 1.85; margin-bottom: 24px; }
+  .org-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .org-tag { background: rgba(245,200,66,0.12); border: 1px solid rgba(245,200,66,0.25); color: var(--gold); font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 20px; }
+
+  /* ─── VOICES ─── */
+  .voices { background: var(--light-bg); }
+  .voice-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .voice-card { background: #fff; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+  .voice-photo { height: 140px; overflow: hidden; position: relative; }
+  .voice-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+  .voice-photo-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(255,255,255,1) 0%, transparent 60%); }
+  .voice-body { padding: 20px 24px 24px; }
+  .voice-stars { color: var(--gold); font-size: 14px; margin-bottom: 10px; }
+  .voice-text { font-size: 13.5px; color: var(--text-dark); line-height: 1.85; margin-bottom: 18px; position: relative; }
+  .voice-text::before { content: '"'; font-family: 'Montserrat', sans-serif; font-size: 48px; font-weight: 900; color: var(--gold); opacity: 0.2; position: absolute; top: -14px; left: -8px; line-height: 1; }
+  .voice-person { display: flex; align-items: center; gap: 12px; }
+  .voice-avatar { width: 42px; height: 42px; border-radius: 50%; object-fit: cover; object-position: center top; border: 2px solid var(--border); }
+  .voice-name { font-size: 13px; font-weight: 700; color: var(--navy); }
+  .voice-role { font-size: 11px; color: var(--text-light); }
+
+  /* ─── PARTICIPATION ─── */
+  .participation { background: #FAF6E0; }
+  .participation .section-label { color: var(--gold-dark); }
+  .participation .section-title { color: var(--navy); }
+  .part-highlight { 
+    font-family: 'Montserrat', sans-serif; 
+    font-size: 48px; 
+    font-weight: 900; 
+    color: var(--navy); 
+    margin: 24px 0; 
+    text-align: center;
+  }
+  .part-highlight-sub { 
+    display: block; 
+    font-size: 14px; 
+    color: var(--text-dark); 
+    font-weight: 600; 
+    margin-top: 8px;
+  }
+  .part-intro { 
+    text-align: center; 
+    font-size: 15px; 
+    color: var(--text-mid); 
+    line-height: 1.9; 
+    margin: 32px auto; 
+    max-width: 700px;
+  }
+  .faq-items { 
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 24px; 
+    margin-top: 48px;
+  }
+  .faq-item { 
+    background: #fff; 
+    border: 1px solid var(--border); 
+    border-radius: 14px; 
+    padding: 28px; 
+    display: flex; 
+    flex-direction: column;
+  }
+  .faq-question { 
+    font-size: 14px; 
+    font-weight: 700; 
+    color: var(--navy); 
+    margin-bottom: 16px; 
+    padding-bottom: 16px; 
+    border-bottom: 2px solid var(--gold); 
+    display: flex; 
+    align-items: flex-start; 
+    gap: 10px;
+  }
+  .faq-question::before { 
+    content: 'Q'; 
+    font-family: 'Montserrat', sans-serif; 
+    font-weight: 900; 
+    font-size: 18px; 
+    color: var(--gold); 
+    flex-shrink: 0;
+  }
+  .faq-answer { 
+    font-size: 13px; 
+    color: var(--text-dark); 
+    line-height: 1.75;
+    display: flex; 
+    align-items: flex-start; 
+    gap: 10px;
+  }
+  .faq-answer::before { 
+    content: 'A'; 
+    font-family: 'Montserrat', sans-serif; 
+    font-weight: 900; 
+    font-size: 18px; 
+    color: var(--navy); 
+    flex-shrink: 0;
+  }
+
+  /* CONTACT */
+  .contact { background: var(--navy); }
+  .contact-inner { text-align: center; }
+  .contact .section-label { color: var(--gold); }
+  .contact .section-title { color: #fff; }
+  .contact-desc { font-size: 15px; color: rgba(255,255,255,0.72); line-height: 1.8; margin-bottom: 48px; }
+  .contact-form { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 40px; max-width: 620px; margin: 0 auto; text-align: left; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-group { margin-bottom: 18px; }
+  .form-group label { display: block; font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.8); margin-bottom: 6px; }
+  .form-group input, .form-group select, .form-group textarea { width: 100%; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; padding: 12px 14px; font-size: 14px; color: #fff; font-family: 'Noto Sans JP', sans-serif; outline: none; transition: border-color 0.2s; }
+  .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.32); }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--gold); }
+  .form-group select option { background: var(--navy); color: #fff; }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-submit { width: 100%; background: var(--gold); color: var(--navy); border: none; border-radius: 8px; padding: 16px; font-size: 15px; font-weight: 800; cursor: pointer; font-family: 'Noto Sans JP', sans-serif; transition: background 0.2s; margin-top: 8px; }
+  .form-submit:hover { background: var(--gold-dark); }
+
+  /* FOOTER */
+  footer { background: #0D0A2E; padding: 36px 48px; }
+  .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+  .footer-brand { font-family: 'Montserrat', sans-serif; font-size: 13px; color: rgba(255,255,255,0.45); }
+  .footer-brand strong { color: var(--gold); }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { font-size: 12px; color: rgba(255,255,255,0.4); text-decoration: none; }
+  .footer-links a:hover { color: var(--gold); }
+
+  /* ─── RESPONSIVE: TABLET ─── */
+  @media (max-width: 1023px) {
+    nav { padding: 0 32px; }
+    section { padding: 60px 32px; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 48px 32px; }
+    .hero-right { min-height: 400px; }
+    .hero h1 { font-size: 32px; }
+    .hero-btns { flex-direction: column; }
+    .btn-gold, .btn-outline { width: 100%; text-align: center; }
+    .about-grid { grid-template-columns: 1fr; gap: 36px; }
+    .activity-cards { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .organizer-card { grid-template-columns: 1fr; }
+    .org-photo-col { min-height: 300px; }
+    .org-content { padding: 36px 32px; }
+    .voice-cards { grid-template-columns: 1fr; }
+    .photo-strip { grid-template-columns: repeat(2, 1fr); height: 160px; }
+    .faq-items { grid-template-columns: 1fr; gap: 16px; }
+    .features-badges { grid-template-columns: 1fr; gap: 14px; }
+    .form-row { grid-template-columns: 1fr; gap: 12px; }
+    footer .footer-inner { flex-direction: column; align-items: flex-start; gap: 20px; }
+  }
+
+  /* ─── RESPONSIVE: MOBILE ─── */
+  @media (max-width: 767px) {
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    nav { 
+      padding: 0 16px; height: 56px;
+      flex-direction: column; justify-content: center;
+    }
+    nav a:not(.nav-logo) { display: none; }
+    nav .nav-logo img { height: 32px; }
+    .nav-links { display: none; }
+    .nav-cta { display: none; }
+    
+    section { padding: 48px 16px; }
+    .section-inner { max-width: 100%; }
+    .hero { min-height: auto; }
+    .hero-left { 
+      padding: 40px 16px; 
+      grid-column: 1;
+      grid-row: 2;
+    }
+    .hero-right { 
+      min-height: 300px;
+      order: -1;
+      grid-column: 1;
+      grid-row: 1;
+    }
+    .hero-badge { font-size: 10px; padding: 4px 12px; }
+    .hero h1 { font-size: 24px; margin-bottom: 8px; }
+    .hero-sub { font-size: 11px; letter-spacing: 0.05em; }
+    .hero-desc { font-size: 13px; line-height: 1.7; max-width: 100%; }
+    .hero-stats { flex-direction: column; gap: 16px; }
+    .hero-stat-divider { display: none; }
+    .hero-stat-num { font-size: 24px; }
+    .hero-stat-label { font-size: 10px; }
+    .hero-btns { gap: 10px; }
+    .btn-gold, .btn-outline { padding: 12px 20px; font-size: 12px; width: 100%; }
+    .hero-float-card { bottom: 12px; right: 12px; padding: 10px 14px; max-width: 180px; }
+    .float-icon { font-size: 20px; }
+    .float-text { font-size: 11px; }
+    .hero-float-badge { top: 12px; right: 12px; padding: 8px 12px; font-size: 11px; }
+    .float-badge-sub { font-size: 8px; }
+    
+    .photo-strip { 
+      grid-template-columns: 1fr; 
+      height: 180px; 
+      gap: 0;
+    }
+    .strip-label { font-size: 12px; }
+    .strip-label span { font-size: 10px; }
+    
+    .section-label { font-size: 10px; }
+    .section-title { font-size: 22px; margin-bottom: 12px; }
+    .section-desc { font-size: 13px; max-width: 100%; }
+    .section-head { margin-bottom: 32px; }
+    
+    .about-grid { gap: 24px; }
+    .about-main-photo { height: 300px; }
+    .about-sub-photo { 
+      width: 130px; height: 100px; 
+      bottom: -16px; right: -16px;
+    }
+    .about-points { gap: 14px; }
+    .about-point { padding: 14px 16px; gap: 12px; }
+    .point-icon { width: 36px; height: 36px; font-size: 16px; }
+    .point-text h4 { font-size: 13px; }
+    .point-text p { font-size: 12px; }
+    .features-badges { grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 20px; }
+    .feature-badge { padding: 16px 12px; }
+    .feature-badge-icon { font-size: 24px; }
+    .feature-badge-text { font-size: 12px; }
+    .about-tagline { font-size: 12px; margin: 0 auto; }
+    .features-badges { grid-template-columns: 1fr; gap: 12px; margin-bottom: 20px; }
+    .feature-badge { padding: 16px 12px; }
+    .feature-badge-icon { font-size: 24px; }
+    .feature-badge-text { font-size: 12px; }
+    .about-tagline { font-size: 12px; }
+    
+    .activity-cards { grid-template-columns: 1fr; gap: 16px; }
+    .card-photo { height: 140px; }
+    .card-body { padding: 16px; }
+    .card-body h3 { font-size: 15px; }
+    .card-body p { font-size: 12px; }
+    .card-detail-item { font-size: 11px; }
+    
+    .schedule-table { font-size: 12px; }
+    .schedule-table th { padding: 10px 12px; font-size: 11px; }
+    .schedule-table td { padding: 12px; font-size: 12px; }
+    .sched-badge { font-size: 10px; padding: 3px 8px; }
+    
+    .organizer-card { gap: 0; }
+    .org-photo-col { 
+      min-height: 250px;
+      order: -1;
+    }
+    .org-content { 
+      padding: 32px 16px; 
+    }
+    .org-role { font-size: 10px; }
+    .org-name { font-size: 20px; }
+    .org-title { font-size: 12px; }
+    .org-bio { font-size: 13px; }
+    .org-tag { font-size: 11px; padding: 3px 10px; }
+    
+    .voice-cards { gap: 16px; }
+    .voice-photo { height: 120px; }
+    .voice-body { padding: 16px 16px 20px; }
+    .voice-stars { font-size: 12px; }
+    .voice-text { font-size: 12px; }
+    .voice-text::before { font-size: 36px; top: -10px; }
+    .voice-person { gap: 10px; }
+    .voice-avatar { width: 36px; height: 36px; }
+    .voice-name { font-size: 12px; }
+    .voice-role { font-size: 10px; }
+    
+    .part-highlight { font-size: 36px; margin: 20px 0; }
+    .part-highlight-sub { font-size: 12px; }
+    .part-intro { font-size: 13px; margin: 28px auto; }
+    .faq-items { grid-template-columns: 1fr; gap: 14px; margin-top: 36px; }
+    .faq-item { padding: 20px; }
+    .faq-question { font-size: 13px; margin-bottom: 14px; padding-bottom: 12px; }
+    .faq-answer { font-size: 12px; }
+    
+    .contact-desc { font-size: 13px; margin-bottom: 32px; }
+    .contact-form { padding: 28px 16px; max-width: 100%; }
+    .form-group { margin-bottom: 14px; }
+    .form-group label { font-size: 12px; }
+    .form-group input, .form-group select, .form-group textarea { 
+      padding: 10px 12px; font-size: 13px;
+    }
+    .form-group textarea { min-height: 80px; }
+    .form-submit { padding: 14px; font-size: 14px; }
+    
+    footer { padding: 28px 16px; }
+    footer .footer-inner { 
+      flex-direction: column; 
+      align-items: flex-start; 
+      gap: 16px;
+    }
+    .footer-brand { font-size: 11px; }
+    .footer-brand strong { font-size: 12px; }
+    .footer-links { 
+      flex-direction: column;
+      gap: 10px; 
+    }
+    .footer-links a { font-size: 11px; }
+  }
+
+  /* ─── RESPONSIVE: SMALL MOBILE ─── */
+  @media (max-width: 480px) {
+    nav { padding: 0 12px; height: 48px; }
+    nav .nav-logo img { height: 28px; }
+    
+    section { padding: 40px 12px; }
+    
+    .hero-left { padding: 32px 12px; }
+    .hero h1 { font-size: 20px; }
+    .hero-sub { font-size: 10px; }
+    .hero-desc { font-size: 12px; }
+    .hero-badge { font-size: 9px; padding: 3px 10px; }
+    
+    .section-title { font-size: 20px; }
+    .section-desc { font-size: 12px; }
+    
+    .card-body h3 { font-size: 14px; }
+    .schedule-table { font-size: 11px; }
+    .schedule-table th { padding: 8px 10px; font-size: 10px; }
+    .schedule-table td { padding: 10px 8px; font-size: 11px; }
+    
+    .org-name { font-size: 18px; }
+    .org-bio { font-size: 12px; }
+    
+    .voice-text { font-size: 11px; }
+    
+    .features-badges { gap: 10px; }
+    .feature-badge { padding: 14px 10px; }
+    .feature-badge-icon { font-size: 22px; }
+    .feature-badge-text { font-size: 11px; }
+    .about-tagline { font-size: 12px; }
+    
+    .part-highlight { font-size: 32px; }
+    .part-intro { font-size: 12px; }
+    .faq-item { padding: 18px; }
+    .faq-question { font-size: 12px; }
+    .faq-answer { font-size: 11px; }
+    
+    .contact-form { padding: 24px 14px; }
+    .form-submit { font-size: 13px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <img src="MARKEY_CONSULTING.jpg" alt="MARKEY CONSULTING" style="height: 40px; width: auto; display: block;">
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">研究会について</a></li>
+    <li><a href="#activities">活動内容</a></li>
+    <li><a href="#organizer">主催者</a></li>
+    <li><a href="#voices">参加者の声</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">入会申込</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <!-- 左：テキスト -->
+  <div class="hero-left">
+    <div class="hero-badge">BtoB Sales Research Community</div>
+    <p class="hero-sub">SALES ACADEMY BY MARKEY CONSULTING</p>
+    <h1>BtoB営業を、<br><em>みんなで学ぶ。</em><br>共に成長する。</h1>
+    <p class="hero-desc">法人営業・SaaS営業・コンサルティング営業など、To Bセールスの最前線で活躍するプロフェッショナルが集まり、実践的なノウハウを共有する研究会です。</p>
+    <div class="hero-btns">
+      <a href="https://forms.gle/1cDtf1LytakcHAzbA" class="btn-gold" target="_blank" rel="noopener noreferrer">入会申込はこちら</a>
+      <a href="#about" class="btn-outline">研究会について</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num">月1回</div>
+        <div class="hero-stat-label">定例勉強会</div>
+      </div>
+      <div class="hero-stat-divider"></div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">3形式</div>
+        <div class="hero-stat-label">学び・交流・講演</div>
+      </div>
+      <div class="hero-stat-divider"></div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">全国</div>
+        <div class="hero-stat-label">オンライン参加OK</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 右：写真 -->
+  <div class="hero-right">
+    <img class="hero-main-photo"
+      src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=900&q=80&fit=crop"
+      alt="ビジネスミーティング">
+    <div class="hero-photo-overlay"></div>
+    <div class="hero-float-badge">
+      <div style="font-size:22px; margin-bottom:2px;">🏆</div>
+      BtoB Sales<br>
+      <span class="float-badge-sub">Research Community</span>
+    </div>
+    <div class="hero-float-card">
+      <div class="float-icon">🎯</div>
+      <div class="float-text">
+        <strong>次回開催</strong>
+        毎月第3金曜日<br>勉強会・情報交換
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PHOTO STRIP -->
+<div class="photo-strip">
+  <div class="strip-item">
+    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80&fit=crop" alt="勉強会">
+    <div class="strip-overlay">
+      <div class="strip-label"><span>01 STUDY</span>月次勉強会・情報交換</div>
+    </div>
+  </div>
+  <div class="strip-item">
+    <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=600&q=80&fit=crop" alt="講演会">
+    <div class="strip-overlay">
+      <div class="strip-label"><span>02 LECTURE</span>ゲスト講師による特別講演</div>
+    </div>
+  </div>
+  <div class="strip-item">
+    <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600&q=80&fit=crop" alt="交流会">
+    <div class="strip-overlay">
+      <div class="strip-label"><span>03 NETWORK</span>オンライン・オフライン交流会</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-photo-col">
+        <img class="about-main-photo"
+          src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&q=80&fit=crop"
+          alt="ビジネスミーティング">
+        <img class="about-sub-photo"
+          src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=300&q=80&fit=crop&crop=faces"
+          alt="営業プロフェッショナル">
+        <div class="about-tag-chip">Sales Academy</div>
+      </div>
+      <div>
+        <div class="section-label">About Sales Academy</div>
+        <h2 class="section-title">BtoB営業のプロが集まる<br>学びと交流の場</h2>
+        <p class="section-desc">Sales Academy by MARKEY CONSULTINGは、法人営業に携わるすべてのビジネスパーソンが実践的なスキルを磨き、横のつながりを築けるコミュニティです。</p>
+        <div class="about-features">
+          <div class="features-badges">
+            <div class="feature-badge">
+              <span class="feature-badge-icon">💰</span>
+              <div class="feature-badge-text">登録無料</div>
+            </div>
+            <div class="feature-badge">
+              <span class="feature-badge-icon">🎟️</span>
+              <div class="feature-badge-text">イベント時のみ<br>費用発生</div>
+            </div>
+            <div class="feature-badge">
+              <span class="feature-badge-icon">✅</span>
+              <div class="feature-badge-text">自由参加OK</div>
+            </div>
+          </div>
+          <p class="about-tagline">本格的なビジネス塾ではなく、仲間と一緒にBtoB営業を学んでいくアットホームな研究会です。まずは気軽にご登録ください。</p>
+        </div>
+        <div class="about-points">
+          <div class="about-point">
+            <div class="point-icon">📚</div>
+            <div class="point-text">
+              <h4>実践的なノウハウ共有</h4>
+              <p>現場で使えるセールス手法・トーク術・提案書の書き方などをメンバー同士でシェア</p>
+            </div>
+          </div>
+          <div class="about-point">
+            <div class="point-icon">🌐</div>
+            <div class="point-text">
+              <h4>業界・職種を超えた交流</h4>
+              <p>SaaS・コンサル・メーカー・広告など多様な業界のトップセールスと繋がれる</p>
+            </div>
+          </div>
+          <div class="about-point">
+            <div class="point-icon">🚀</div>
+            <div class="point-text">
+              <h4>キャリア・成果の向上</h4>
+              <p>学びの継続と仲間との切磋琢磨でセールスパーソンとしての市場価値を高める</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACTIVITIES -->
+<section class="activities" id="activities">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="section-label">Activities</div>
+      <h2 class="section-title">3つの活動形式</h2>
+      <p class="section-desc">多様な学び・交流の機会を提供します。毎月の定例会を中心に、特別講演やハイブリッド交流会を開催。</p>
+    </div>
+    <div class="activity-cards">
+      <div class="activity-card">
+        <div class="card-photo">
+          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80&fit=crop" alt="勉強会">
+          <div class="card-photo-overlay"><div class="card-num">01 STUDY</div></div>
+        </div>
+        <div class="card-body">
+          <h3>月次勉強会・情報交換</h3>
+          <p>月1回、主催者による営業技術講義とディスカッションを実施。成功事例・失敗事例を共有し、参加者全員で議論を深めます。</p>
+          <div class="card-detail">
+            <div class="card-detail-item"><span class="detail-dot"></span>月1回・不定期開催</div>
+            <div class="card-detail-item"><span class="detail-dot"></span>オンライン開催</div>
+            <div class="card-detail-item"><span class="detail-dot"></span>90〜120分・テーマ制</div>
+          </div>
+        </div>
+      </div>
+      <div class="activity-card">
+        <div class="card-photo">
+          <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=600&q=80&fit=crop" alt="講演会">
+          <div class="card-photo-overlay"><div class="card-num">02 LECTURE</div></div>
+        </div>
+        <div class="card-body">
+          <h3>ゲスト講師による特別講演</h3>
+          <p>トップセールスや著名な経営者・専門家をゲスト講師として招聘。業界最前線の知識を直接学べます。</p>
+          <div class="card-detail">
+            <div class="card-detail-item"><span class="detail-dot"></span>不定期開催</div>
+            <div class="card-detail-item"><span class="detail-dot"></span>講演＋Q&Aセッション</div>
+          </div>
+        </div>
+      </div>
+      <div class="activity-card">
+        <div class="card-photo">
+          <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600&q=80&fit=crop" alt="交流会">
+          <div class="card-photo-overlay"><div class="card-num">03 NETWORK</div></div>
+        </div>
+        <div class="card-body">
+          <h3>オンライン・オフライン交流会</h3>
+          <p>気軽に参加できるオンライン懇親会と、関係を深めるリアルイベントをハイブリッドで開催します。</p>
+          <div class="card-detail">
+            <div class="card-detail-item"><span class="detail-dot"></span>不定期開催</div>
+            <div class="card-detail-item"><span class="detail-dot"></span>オンライン・オフライン混合</div>
+            <div class="card-detail-item"><span class="detail-dot"></span>全国どこからでも参加OK</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ORGANIZER -->
+<section class="organizer" id="organizer">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="section-label">Organizer</div>
+      <h2 class="section-title">主催者紹介</h2>
+    </div>
+    <div class="organizer-card">
+      <div class="org-photo-col">
+        <img src="顔写真③.jpg" alt="主催者">
+        <div class="org-photo-overlay"></div>
+      </div>
+      <div class="org-content">
+        <div class="org-role">Founder & Organizer</div>
+        <div class="org-name">鶴田　槙人</div>
+        <div style="font-family: 'Montserrat', sans-serif; font-size: 12px; color: rgba(255,255,255,0.7); font-weight: 600; letter-spacing: 0.08em; margin-bottom: 12px;">TSURUTA MAKITO</div>
+        <div class="org-title">MARKEY CONSULTING 代表<br>元大手ハウスメーカー　エリアマネージャー<br>元LiB CONSULTING　アソシエイトマネージャー</div>
+        <p class="org-bio">大手ハウスメーカーでトップセールス・エリアマネージャー経験後、経営コンサルティング参画。企業の営業強化支援の中核として活躍する傍ら、自身もコンサルティングセールスにて成果を出し続ける。現在はMARKEY CONSULTING代表として、企業の営業支援を行う。「営業は鍛えることができる」ことをモットーに、より体系的な営業メソッドの普及を目指し、Sales Academyを設立。</p>
+        <div class="org-tags">
+          <span class="org-tag">SaaS営業</span>
+          <span class="org-tag">法人営業</span>
+          <span class="org-tag">営業組織改革</span>
+          <span class="org-tag">コンサルティング</span>
+          <span class="org-tag">研修・講演</span>
+        </div>
+        <div style="margin-top: 28px;">
+          <a href="https://forms.gle/1cDtf1LytakcHAzbA" class="btn-gold" target="_blank" rel="noopener noreferrer">入会申込はこちら（Googleフォーム）</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VOICES -->
+<section class="voices" id="voices">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="section-label">Voices</div>
+      <h2 class="section-title">参加者の声</h2>
+      <p class="section-desc">実際に参加されたメンバーからの感想をご紹介します。</p>
+    </div>
+    <div class="voice-cards">
+      <div class="voice-card">
+        <div class="voice-photo">
+          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=700&q=80&fit=crop" alt="オフィス">
+          <div class="voice-photo-overlay"></div>
+        </div>
+        <div class="voice-body">
+          <div class="voice-stars">★★★★★</div>
+          <p class="voice-text">勉強会でシェアされた「ROI訴求トーク」を使ったら、翌月に大型案件を受注できました。他業界の成功事例が自分の営業にも活かせると実感しています。</p>
+          <div class="voice-person">
+            <img class="voice-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80&fit=crop&crop=faces" alt="田中さん">
+            <div>
+              <div class="voice-name">田中 健太さん（仮名）</div>
+              <div class="voice-role">SaaS企業 / 営業マネージャー・30代</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-photo">
+          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=700&q=80&fit=crop" alt="チームミーティング">
+          <div class="voice-photo-overlay"></div>
+        </div>
+        <div class="voice-body">
+          <div class="voice-stars">★★★★★</div>
+          <p class="voice-text">コンサルティング営業の提案プロセスについて、他社のやり方を聞けたのが非常に参考になりました。同じ悩みを持つ仲間がいると分かっただけでも心強い。</p>
+          <div class="voice-person">
+            <img class="voice-avatar" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&q=80&fit=crop&crop=faces" alt="鈴木さん">
+            <div>
+              <div class="voice-name">鈴木 美咲さん（仮名）</div>
+              <div class="voice-role">コンサルティングファーム / 営業担当・20代</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-photo">
+          <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=700&q=80&fit=crop" alt="プレゼン">
+          <div class="voice-photo-overlay"></div>
+        </div>
+        <div class="voice-body">
+          <div class="voice-stars">★★★★★</div>
+          <p class="voice-text">ゲスト講師の話が毎回刺激的で、「こんなアプローチがあったのか」と学びの連続です。オンラインで全国の優秀な営業パーソンと繋がれるのも大きな魅力ですね。</p>
+          <div class="voice-person">
+            <img class="voice-avatar" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80&fit=crop&crop=faces" alt="山本さん">
+            <div>
+              <div class="voice-name">山本 拓也さん（仮名）</div>
+              <div class="voice-role">メーカー / 法人営業・40代</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-photo">
+          <img src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?w=700&q=80&fit=crop" alt="ビジネス">
+          <div class="voice-photo-overlay"></div>
+        </div>
+        <div class="voice-body">
+          <div class="voice-stars">★★★★★</div>
+          <p class="voice-text">参加後3ヶ月で受注率が約20%改善しました。仲間から学んだ「ヒアリング設計」のフレームワークが特に効果的で、チーム全体に展開しています。</p>
+          <div class="voice-person">
+            <img class="voice-avatar" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&q=80&fit=crop&crop=faces" alt="伊藤さん">
+            <div>
+              <div class="voice-name">伊藤 さやかさん（仮名）</div>
+              <div class="voice-role">広告代理店 / 営業リーダー・30代</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTICIPATION -->
+<section class="participation" id="participation">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="section-label">About Participation</div>
+      <h2 class="section-title">まずは気軽に参加してみてください</h2>
+    </div>
+    <div class="part-highlight">
+      登録無料
+      <span class="part-highlight-sub">イベント参加時のみ費用が発生します</span>
+    </div>
+    <p class="part-intro">
+      本格的なビジネス塾ではなく、仲間と一緒にBtoB営業を学んでいく、アットホームな研究会です。
+    </p>
+    <div class="faq-items">
+      <div class="faq-item">
+        <div class="faq-question">入会費・年会費はかかりますか？</div>
+        <div class="faq-answer">無料です。イベント参加時のみ費用が発生します。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">毎回参加しないといけませんか？</div>
+        <div class="faq-answer">自由参加です。参加できるときだけ来ていただければOKです。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">どんな人が参加していますか？</div>
+        <div class="faq-answer">法人営業・SaaS営業・コンサルティング営業など、BtoB営業に関わるビジネスパーソンが集まっています。</div>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top: 32px;">
+      <a href="https://forms.gle/1cDtf1LytakcHAzbA" class="btn-gold" target="_blank" rel="noopener noreferrer">入会申込はこちら（Googleフォーム）</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner contact-inner">
+    <div class="section-label">Join Us</div>
+    <h2 class="section-title">入会申込・お問い合わせ</h2>
+    <p class="contact-desc">Sales Academyへの参加を希望される方、まずはお気軽にお問い合わせください。<br>担当者より3営業日以内にご連絡いたします。</p>
+    <div style="text-align:center; margin-top: 32px;">
+      <a href="https://forms.gle/1cDtf1LytakcHAzbA" class="btn-gold" target="_blank" rel="noopener noreferrer">入会申込・お問い合わせはこちら（Googleフォーム）</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <strong>Sales Academy</strong> by MARKEY CONSULTING<br>
+      <span style="font-size:11px;">© 2025 MARKEY CONSULTING. All rights reserved.</span>
+    </div>
+    <div class="footer-links">
+      <a href="#about">研究会について</a>
+      <a href="#activities">活動内容</a>
+      <a href="#organizer">主催者</a>
+      <a href="#contact">お問い合わせ</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
