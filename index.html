@@ -684,6 +684,15 @@ ul{list-style:none}
   margin-top:22px;padding-top:22px;border-top:1px dashed var(--gray-4);
   font-size:13px;line-height:2;color:var(--ink-2);max-width:620px;margin-left:auto;margin-right:auto;
 }
+.faq-note{
+  margin:clamp(22px,2.8vw,30px) auto 0;
+  background:var(--white);border-radius:var(--r-md);
+  padding:18px 22px;box-shadow:var(--sh-1);
+  display:flex;gap:13px;align-items:flex-start;
+  font-size:13px;line-height:1.9;color:var(--ink-2);
+  max-width:720px;
+}
+.faq-note .ico{font-size:17px;color:var(--accent);margin-top:4px}
 .faq-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(14px,2vw,20px)}
 .faq{background:var(--white);border-radius:var(--r-md);padding:clamp(22px,2.6vw,28px);box-shadow:var(--sh-1)}
 .faq-q{
@@ -1423,6 +1432,10 @@ ul{list-style:none}
         <div class="faq-a"><span class="qa qa-a">A</span>法人営業・SaaS営業・コンサルティング営業など、BtoB営業に関わるビジネスパーソンが集まっています。</div>
       </div>
     </div>
+    <p class="faq-note rv">
+      <svg class="ico"><use href="#i-chat"></use></svg>
+      <span>お支払い方法など詳しい内容は、ご登録時にお送りするメールでご案内します。</span>
+    </p>
   </div>
 </section>
 
