@@ -605,6 +605,38 @@ ul{list-style:none}
 /* ═══════════════════════════════════════════
    VOICES
    ═══════════════════════════════════════════ */
+.voice-feats{display:flex;flex-direction:column;gap:clamp(16px,2.2vw,22px);margin-bottom:clamp(26px,3.4vw,40px)}
+.voice-feat{
+  position:relative;overflow:hidden;
+  background:var(--white);border-radius:var(--r-lg);
+  padding:clamp(26px,3.4vw,42px) clamp(24px,3.4vw,44px);
+  box-shadow:var(--sh-2);
+  display:grid;grid-template-columns:186px 1fr;gap:clamp(22px,3.4vw,46px);
+}
+.voice-feat::before{content:'';position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--grad)}
+.voice-feat-who{display:flex;flex-direction:column;align-items:flex-start;gap:12px}
+.voice-feat-mono{
+  width:58px;height:58px;border-radius:50%;
+  background:var(--grad);color:var(--white);
+  display:grid;place-items:center;
+  font-family:var(--en);font-size:21px;font-weight:600;
+}
+.voice-feat-name{font-size:15.5px;font-weight:700;letter-spacing:.05em;line-height:1.5}
+.voice-feat-role{font-size:12px;color:var(--ink-3);line-height:1.7;margin-top:2px}
+.voice-feat-stars{display:flex;gap:2px;color:var(--red);font-size:14px;margin-top:2px}
+.voice-feat-q{position:relative;padding-left:clamp(22px,2.4vw,30px)}
+.voice-feat-q::before{
+  content:'"';position:absolute;left:-4px;top:-18px;
+  font-family:var(--en);font-size:62px;font-weight:700;line-height:1;
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;
+  opacity:.4;
+}
+.voice-feat-q p{font-size:clamp(13.5px,1.55vw,15.5px);line-height:2.2;color:var(--ink)}
+.voice-feat-q p+p{margin-top:clamp(14px,1.8vw,18px)}
+.voice-more{
+  font-size:11px;font-weight:700;letter-spacing:.12em;color:var(--ink-3);
+  text-align:center;margin-bottom:clamp(14px,1.8vw,18px);
+}
 .voice-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(16px,2.2vw,24px)}
 .voice{
   background:var(--white);border-radius:var(--r-md);
@@ -634,7 +666,6 @@ ul{list-style:none}
 }
 .voice-name{font-size:13px;font-weight:700;letter-spacing:.03em;line-height:1.6}
 .voice-role{font-size:11.5px;color:var(--ink-3);line-height:1.6}
-.voice-note{margin-top:26px;text-align:center;font-size:11.5px;color:var(--ink-3);line-height:1.8}
 
 /* ═══════════════════════════════════════════
    PARTICIPATION
@@ -759,6 +790,7 @@ ul{list-style:none}
   .feat-grid{grid-template-columns:1fr;max-width:520px;margin:0 auto}
   .act-grid{grid-template-columns:1fr;max-width:520px;margin:0 auto}
   .voice-grid{grid-template-columns:1fr;max-width:560px;margin:0 auto}
+  .voice-feat{grid-template-columns:150px 1fr;gap:26px}
   .faq-grid{grid-template-columns:1fr;max-width:560px;margin:0 auto}
   .org-runs{grid-template-columns:1fr}
   .next{grid-template-columns:auto 1fr;row-gap:26px}
@@ -801,6 +833,12 @@ ul{list-style:none}
 
 
   .voice-q{padding-left:22px}
+  .voice-feat{grid-template-columns:1fr;gap:20px;padding:24px 20px}
+  .voice-feat-who{flex-direction:row;align-items:center;gap:14px;flex-wrap:wrap}
+  .voice-feat-mono{width:48px;height:48px;font-size:18px}
+  .voice-feat-stars{width:100%;margin-top:0}
+  .voice-feat-q{padding-left:18px}
+  .voice-feat-q::before{font-size:46px;top:-14px}
 
   .org-head{flex-direction:column;align-items:flex-start;gap:18px}
   .org-photo{width:132px}
@@ -1264,6 +1302,39 @@ ul{list-style:none}
       <h2 class="sec-title">参加者の声</h2>
       <p class="sec-lead">実際に参加されたメンバーからの感想をご紹介します。</p>
     </div>
+    <div class="voice-feats">
+      <div class="voice-feat rv">
+        <div class="voice-feat-who">
+          <span class="voice-feat-mono" aria-hidden="true">S</span>
+          <div>
+            <div class="voice-feat-name">席川さん</div>
+            <div class="voice-feat-role">法人営業 / 建設機械</div>
+          </div>
+          <div class="voice-feat-stars" aria-label="5段階評価のうち5"><svg class="ico ico--fill"><use href="#i-star"></use></svg><svg class="ico ico--fill"><use href="#i-star"></use></svg><svg class="ico ico--fill"><use href="#i-star"></use></svg><svg class="ico ico--fill"><use href="#i-star"></use></svg><svg class="ico ico--fill"><use href="#i-star"></use></svg></div>
+        </div>
+        <div class="voice-feat-q">
+          <p>営業未経験で、会社のまわりの人との差を感じながら、何かを変えたいと思う中で、この研修に出会い、参加しました。</p>
+          <p>インプットとして必要なものはもちろん、どのようにして実務に活かしていくのかまで、レクチャーいただきました。必要なスキルを体系的に学び、実務を相談しながら実践に落とせるのですぐ使える内容ばかりです。</p>
+          <p>会社の中で少しずつ営業機会をもらえるようになってきたが、やり方が分からない、より成長していきたいと思っている方におすすめです。</p>
+        </div>
+      </div>
+      <div class="voice-feat rv">
+        <div class="voice-feat-who">
+          <span class="voice-feat-mono" aria-hidden="true">Y</span>
+          <div>
+            <div class="voice-feat-name">山茂さん</div>
+            <div class="voice-feat-role">広告代理店営業 / 個人</div>
+          </div>
+          <div class="voice-feat-stars" aria-label="5段階評価のうち5"><svg class="ico ico--fill"><use href="#i-star"></use></svg><svg class="ico ico--fill"><use href="#i-star"></use></svg><svg class="ico ico--fill"><use href="#i-star"></use></svg><svg class="ico ico--fill"><use href="#i-star"></use></svg><svg class="ico ico--fill"><use href="#i-star"></use></svg></div>
+        </div>
+        <div class="voice-feat-q">
+          <p>営業経験者向けの内容かと思っていましたが、苦手意識のある方にも非常に実践的な研修でした。実業務を題材に相談・演習できるため明日からすぐ使える内容ばかり。顧客心理や商談プロセスを体系的に学べるので、再現性高く成果につなげられると感じました。様々な業種・職種にも使えます。</p>
+          <p>営業力を伸ばしたい方におすすめです。</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="voice-more">OTHER VOICES</p>
     <div class="voice-grid">
       <div class="voice rv">
         <div class="voice-stars" aria-label="5段階評価のうち5">
@@ -1318,7 +1389,6 @@ ul{list-style:none}
         </div>
       </div>
     </div>
-    <p class="voice-note">※ 掲載している氏名はすべて仮名です。</p>
   </div>
 </section>
 
