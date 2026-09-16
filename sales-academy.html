@@ -452,6 +452,56 @@ ul{list-style:none}
 }
 
 /* ═══════════════════════════════════════════
+   SCHEDULE
+   ═══════════════════════════════════════════ */
+.next{
+  display:grid;grid-template-columns:auto 1fr auto;
+  align-items:center;gap:clamp(20px,3vw,40px);
+  background:var(--white);border-radius:var(--r-lg);
+  padding:clamp(26px,3.2vw,40px) clamp(24px,3.2vw,44px);
+  box-shadow:var(--sh-2);position:relative;overflow:hidden;
+  margin-bottom:clamp(30px,3.6vw,46px);
+}
+.next::before{content:'';position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--grad)}
+.next-when{text-align:center;flex-shrink:0}
+.next-badge{
+  display:inline-block;background:var(--grad);color:var(--white);
+  font-family:var(--en);font-size:10.5px;font-weight:700;letter-spacing:.16em;
+  padding:5px 14px;border-radius:var(--r-pill);margin-bottom:14px;
+}
+.next-md{
+  font-family:var(--en);font-size:clamp(40px,5.4vw,58px);font-weight:700;line-height:1;
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;
+  letter-spacing:-.01em;
+}
+.next-md span{font-size:.44em;font-weight:600;letter-spacing:.04em}
+.next-dow{margin-top:8px;font-size:13px;font-weight:700;color:var(--ink-2);letter-spacing:.06em}
+.next-body h3{font-size:clamp(16px,2vw,20px);font-weight:700;letter-spacing:.05em;line-height:1.6;margin-bottom:12px}
+.next-meta{display:flex;flex-wrap:wrap;gap:8px 18px}
+.next-meta li{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-2)}
+.next-meta .ico{font-size:15px;color:var(--accent)}
+.next-cta{flex-shrink:0}
+
+.record{display:grid;grid-template-columns:auto 1fr;gap:clamp(24px,4vw,52px);align-items:center;
+  background:var(--white);border-radius:var(--r-lg);padding:clamp(26px,3.2vw,40px) clamp(24px,3.2vw,44px);
+  box-shadow:var(--sh-1);}
+.record-num{text-align:center;flex-shrink:0;padding-right:clamp(20px,3vw,40px);border-right:1px solid var(--line)}
+.record-big{
+  font-family:var(--en);font-size:clamp(46px,6.4vw,70px);font-weight:700;line-height:1;
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.record-big span{font-size:.36em;font-weight:600}
+.record-lab{margin-top:8px;font-size:12px;font-weight:700;color:var(--ink-2);letter-spacing:.08em}
+.record-h{font-size:13px;font-weight:700;letter-spacing:.06em;color:var(--accent);margin-bottom:14px}
+.themes{display:flex;flex-wrap:wrap;gap:8px}
+.theme{
+  font-size:12.5px;font-weight:500;letter-spacing:.02em;
+  background:var(--accent-tint);color:var(--accent-deep);
+  padding:6px 15px;border-radius:var(--r-pill);
+}
+.theme.more{background:transparent;color:var(--ink-3);padding-left:4px}
+
+/* ═══════════════════════════════════════════
    ORGANIZER
    ═══════════════════════════════════════════ */
 .org{
@@ -648,6 +698,11 @@ ul{list-style:none}
   .act-grid{grid-template-columns:1fr;max-width:520px;margin:0 auto}
   .voice-grid{grid-template-columns:1fr;max-width:560px;margin:0 auto}
   .faq-grid{grid-template-columns:1fr;max-width:560px;margin:0 auto}
+  .next{grid-template-columns:auto 1fr;row-gap:26px}
+  .next-cta{grid-column:1 / -1}
+  .next-cta .btn-ghost{width:100%;justify-content:center}
+  .record{grid-template-columns:1fr;gap:24px}
+  .record-num{padding-right:0;padding-bottom:22px;border-right:none;border-bottom:1px solid var(--line)}
   .hero-bg::after{
     background:
       linear-gradient(100deg,#fff 0%,rgba(255,255,255,.95) 42%,rgba(255,255,255,.6) 72%,rgba(255,255,255,.25) 100%),
@@ -684,6 +739,13 @@ ul{list-style:none}
   .org-photo{aspect-ratio:4/3;min-height:0}
 
   .voice-q{padding-left:22px}
+
+  .next{grid-template-columns:1fr;row-gap:22px;padding:26px 20px 26px 26px;text-align:center}
+  .next-when{text-align:center}
+  .next-meta{justify-content:center;gap:8px 14px}
+  .record{padding:26px 20px}
+  .themes{justify-content:center}
+  .record-h{text-align:center}
 
   .cta-band{padding:19px 20px 17px}
   .final-btn{padding:17px 24px 17px 28px;width:100%;justify-content:center}
@@ -731,6 +793,7 @@ ul{list-style:none}
       <a href="#about">研究会について</a>
       <a href="#features">3つの特徴</a>
       <a href="#activities">活動内容</a>
+      <a href="#schedule">開催情報</a>
       <a href="#organizer">主催者</a>
       <a href="#voices">参加者の声</a>
       <a href="#faq">参加について</a>
@@ -747,6 +810,7 @@ ul{list-style:none}
   <a href="#about">研究会について<svg class="ico"><use href="#i-arrow"></use></svg></a>
   <a href="#features">3つの特徴<svg class="ico"><use href="#i-arrow"></use></svg></a>
   <a href="#activities">活動内容<svg class="ico"><use href="#i-arrow"></use></svg></a>
+  <a href="#schedule">開催情報<svg class="ico"><use href="#i-arrow"></use></svg></a>
   <a href="#organizer">主催者<svg class="ico"><use href="#i-arrow"></use></svg></a>
   <a href="#voices">参加者の声<svg class="ico"><use href="#i-arrow"></use></svg></a>
   <a href="#faq">参加について<svg class="ico"><use href="#i-arrow"></use></svg></a>
@@ -951,8 +1015,64 @@ ul{list-style:none}
   </div>
 </section>
 
+<!-- ══════════ SCHEDULE ══════════ -->
+<section class="section tint" id="schedule">
+  <div class="inner">
+    <div class="sec-head rv">
+      <p class="sec-en">Schedule</p>
+      <h2 class="sec-title">開催情報</h2>
+      <p class="sec-lead">次回の定例会と、これまでに扱ってきたテーマをご紹介します。</p>
+    </div>
+
+    <div class="next rv">
+      <div class="next-when">
+        <span class="next-badge">NEXT</span>
+        <div class="next-md">10<span>月</span>20<span>日</span></div>
+        <div class="next-dow">火曜日</div>
+      </div>
+      <div class="next-body">
+        <h3>第11回 定例会</h3>
+        <ul class="next-meta">
+          <li><svg class="ico"><use href="#i-calendar"></use></svg>19:00 〜 21:00</li>
+          <li><svg class="ico"><use href="#i-monitor"></use></svg>オンライン開催</li>
+          <li><svg class="ico"><use href="#i-users"></use></svg>どなたでも参加OK</li>
+        </ul>
+      </div>
+      <div class="next-cta">
+        <a class="btn-ghost" href="https://forms.gle/1cDtf1LytakcHAzbA" target="_blank" rel="noopener noreferrer">
+          参加する
+          <span class="dot"><svg class="ico"><use href="#i-arrow"></use></svg></span>
+        </a>
+      </div>
+    </div>
+
+    <div class="record rv">
+      <div class="record-num">
+        <div class="record-big">10<span>回</span></div>
+        <div class="record-lab">開催実績</div>
+      </div>
+      <div>
+        <p class="record-h">これまでに扱ったテーマ</p>
+        <div class="themes">
+          <span class="theme">SPIN話法</span>
+          <span class="theme">法人営業の6ステップ</span>
+          <span class="theme">Irresistible Offer</span>
+          <span class="theme">ROI訴求</span>
+          <span class="theme">アンカリング</span>
+          <span class="theme">USPのとがらせ方</span>
+          <span class="theme">ニーズ創成</span>
+          <span class="theme">ニーズヒアリング</span>
+          <span class="theme">視座の上げ方</span>
+          <span class="theme">初回アポの設計</span>
+          <span class="theme more">ほか</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ══════════ ORGANIZER ══════════ -->
-<section class="section tint-2" id="organizer">
+<section class="section" id="organizer">
   <div class="inner">
     <div class="sec-head rv">
       <p class="sec-en">Organizer</p>
@@ -1114,10 +1234,12 @@ ul{list-style:none}
       <a href="#about">研究会について</a>
       <a href="#features">3つの特徴</a>
       <a href="#activities">活動内容</a>
+      <a href="#schedule">開催情報</a>
       <a href="#organizer">主催者</a>
       <a href="#voices">参加者の声</a>
       <a href="#faq">参加について</a>
       <a href="#contact">お問い合わせ</a>
+      <a href="privacy.html">プライバシーポリシー</a>
     </nav>
   </div>
   <div class="ftr-btm">© 2026 MARKEY CONSULTING. All rights reserved.</div>
@@ -1127,7 +1249,7 @@ ul{list-style:none}
 <nav class="mbar" aria-label="クイックメニュー">
   <div class="mbar-in">
     <a href="#activities"><svg class="ico"><use href="#i-file"></use></svg>活動内容</a>
-    <a href="#organizer"><svg class="ico"><use href="#i-badge"></use></svg>主催者</a>
+    <a href="#schedule"><svg class="ico"><use href="#i-calendar"></use></svg>開催情報</a>
     <a href="#voices"><svg class="ico"><use href="#i-chat"></use></svg>参加者の声</a>
     <a class="is-cta" href="https://forms.gle/1cDtf1LytakcHAzbA" target="_blank" rel="noopener noreferrer"><svg class="ico"><use href="#i-users"></use></svg>入会申込</a>
   </div>
