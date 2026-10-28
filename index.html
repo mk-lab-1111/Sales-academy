@@ -461,13 +461,13 @@ ul{list-style:none}
   align-items:center;gap:clamp(20px,3vw,40px);
   background:var(--white);border-radius:var(--r-lg);
   padding:clamp(26px,3.2vw,40px) clamp(24px,3.2vw,44px);
-  box-shadow:var(--sh-2);position:relative;overflow:hidden;
+  box-shadow:0 0 0 2px #F5C842,0 10px 32px rgba(245,200,66,.28);position:relative;overflow:hidden;
   margin-bottom:clamp(30px,3.6vw,46px);
 }
-.next::before{content:'';position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--grad)}
+.next::before{content:'';position:absolute;left:0;top:0;bottom:0;width:6px;background:#F5C842}
 .next-when{text-align:center;flex-shrink:0}
 .next-badge{
-  display:inline-block;background:var(--grad);color:var(--white);
+  display:inline-block;background:#F5C842;color:var(--ink);
   font-family:var(--en);font-size:10.5px;font-weight:700;letter-spacing:.16em;
   padding:5px 14px;border-radius:var(--r-pill);margin-bottom:14px;
 }
@@ -482,6 +482,8 @@ ul{list-style:none}
 .next-meta{display:flex;flex-wrap:wrap;gap:8px 18px}
 .next-meta li{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-2)}
 .next-meta .ico{font-size:15px;color:var(--accent)}
+.next-meta .next-time{font-weight:700;color:var(--ink)}
+.next-meta .next-time .ico{color:#D9A800}
 .next-cta{flex-shrink:0}
 
 .record{display:grid;grid-template-columns:auto 1fr;gap:clamp(24px,4vw,52px);align-items:center;
@@ -1151,13 +1153,13 @@ ul{list-style:none}
     <div class="next rv">
       <div class="next-when">
         <span class="next-badge">NEXT</span>
-        <div class="next-md">10<span>月</span>20<span>日</span></div>
+        <div class="next-md">12<span>月</span>1<span>日</span></div>
         <div class="next-dow">火曜日</div>
       </div>
       <div class="next-body">
-        <h3>第11回 定例会</h3>
+        <h3>次回開催：2026年12月1日（火）20:00〜</h3>
         <ul class="next-meta">
-          <li><svg class="ico"><use href="#i-calendar"></use></svg>19:00 〜 21:00</li>
+          <li class="next-time"><svg class="ico"><use href="#i-calendar"></use></svg>20:00 〜</li>
           <li><svg class="ico"><use href="#i-monitor"></use></svg>オンライン開催</li>
           <li><svg class="ico"><use href="#i-yen"></use></svg>参加費 3,000円</li>
           <li><svg class="ico"><use href="#i-users"></use></svg>どなたでも参加OK</li>
